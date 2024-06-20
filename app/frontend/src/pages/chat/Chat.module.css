@@ -29,6 +29,7 @@
 }
 
 .chatEmptyStateTitle {
+    text-align: center;
     font-size: 4rem;
     font-weight: 600;
     margin-top: 0;
@@ -36,6 +37,7 @@
 }
 
 .chatEmptyStateSubtitle {
+    text-align: center;
     font-weight: 600;
     margin-bottom: 10px;
 }

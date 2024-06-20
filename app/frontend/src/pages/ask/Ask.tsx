@@ -203,10 +203,10 @@ export function Component(): JSX.Element {
                     {showUserUpload && <UploadFile className={styles.commandButton} disabled={!isLoggedIn(client)} />}
                     <SettingsButton className={styles.commandButton} onClick={() => setIsConfigPanelOpen(!isConfigPanelOpen)} />
                 </div>
-                <h1 className={styles.askTitle}>Ask your data</h1>
+                <h1 className={styles.askTitle}>Consulta tus documentos</h1>
                 <div className={styles.askQuestionInput}>
                     <QuestionInput
-                        placeholder="Example: Does my plan cover annual eye exams?"
+                        placeholder="Ejemplo: ¿Mi seguro médico incluye cuidado dental?"
                         disabled={isLoading}
                         initQuestion={question}
                         onSend={question => makeApiRequest(question)}
@@ -214,7 +214,7 @@ export function Component(): JSX.Element {
                 </div>
             </div>
             <div className={styles.askBottomSection}>
-                {isLoading && <Spinner label="Generating answer" />}
+                {isLoading && <Spinner label="Generando respuesta" />}
                 {!lastQuestionRef.current && <ExampleList onExampleClicked={onExampleClicked} useGPT4V={useGPT4V} />}
                 {!isLoading && answer && !error && (
                     <div className={styles.askAnswerContainer}>
@@ -245,18 +245,18 @@ export function Component(): JSX.Element {
             </div>
 
             <Panel
-                headerText="Configure answer generation"
+                headerText="Configuración"
                 isOpen={isConfigPanelOpen}
                 isBlocking={false}
                 onDismiss={() => setIsConfigPanelOpen(false)}
-                closeButtonAriaLabel="Close"
+                closeButtonAriaLabel="Cerrar"
                 onRenderFooterContent={() => <DefaultButton onClick={() => setIsConfigPanelOpen(false)}>Close</DefaultButton>}
                 isFooterAtBottom={true}
             >
                 <TextField
                     className={styles.askSettingsSeparator}
                     defaultValue={promptTemplate}
-                    label="Override prompt template"
+                    label="Sustituir la plantilla de solicitud"
                     multiline
                     autoAdjustHeight
                     onChange={onPromptTemplateChange}
@@ -264,7 +264,7 @@ export function Component(): JSX.Element {
 
                 <Slider
                     className={styles.chatSettingsSeparator}
-                    label="Temperature"
+                    label="Temperatura"
                     min={0}
                     max={1}
                     step={0.1}
@@ -276,7 +276,7 @@ export function Component(): JSX.Element {
 
                 <SpinButton
                     className={styles.askSettingsSeparator}
-                    label="Minimum search score"
+                    label="Punteo mínimo de búsqueda"
                     min={0}
                     step={0.01}
                     defaultValue={minimumSearchScore.toString()}
@@ -285,7 +285,7 @@ export function Component(): JSX.Element {
 
                 <SpinButton
                     className={styles.askSettingsSeparator}
-                    label="Minimum reranker score"
+                    label="Punteo mínimo de reranker"
                     min={1}
                     max={4}
                     step={0.1}
@@ -295,7 +295,7 @@ export function Component(): JSX.Element {
 
                 <SpinButton
                     className={styles.askSettingsSeparator}
-                    label="Retrieve this many search results:"
+                    label="Número de resultados por búsqueda:"
                     min={1}
                     max={50}
                     defaultValue={retrieveCount.toString()}
@@ -307,7 +307,7 @@ export function Component(): JSX.Element {
                     <Checkbox
                         className={styles.askSettingsSeparator}
                         checked={useSemanticRanker}
-                        label="Use semantic ranker for retrieval"
+                        label="Usar el clasificador semántico"
                         onChange={onUseSemanticRankerChange}
                     />
                 )}
@@ -315,7 +315,7 @@ export function Component(): JSX.Element {
                 <Checkbox
                     className={styles.askSettingsSeparator}
                     checked={useSemanticCaptions}
-                    label="Use query-contextual summaries instead of whole documents"
+                    label="Usar resúmenes contextuales de la consulta en lugar de documentos completos"
                     onChange={onUseSemanticCaptionsChange}
                     disabled={!useSemanticRanker}
                 />
@@ -344,7 +344,7 @@ export function Component(): JSX.Element {
                     <Checkbox
                         className={styles.askSettingsSeparator}
                         checked={useOidSecurityFilter || requireAccessControl}
-                        label="Use oid security filter"
+                        label="Usar filtro de seguridad de oid"
                         disabled={!isLoggedIn(client) || requireAccessControl}
                         onChange={onUseOidSecurityFilterChange}
                     />
@@ -353,7 +353,7 @@ export function Component(): JSX.Element {
                     <Checkbox
                         className={styles.askSettingsSeparator}
                         checked={useGroupsSecurityFilter || requireAccessControl}
-                        label="Use groups security filter"
+                        label="Usar filtro de seguridad de grupos"
                         disabled={!isLoggedIn(client) || requireAccessControl}
                         onChange={onUseGroupsSecurityFilterChange}
                     />

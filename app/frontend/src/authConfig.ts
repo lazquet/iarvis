@@ -1,10 +1,24 @@
 // Refactored from https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/blob/main/1-Authentication/1-sign-in/SPA/src/authConfig.js
 
 import { IPublicClientApplication } from "@azure/msal-browser";
-
 const appServicesAuthTokenUrl = ".auth/me";
 const appServicesAuthTokenRefreshUrl = ".auth/refresh";
 const appServicesAuthLogoutUrl = ".auth/logout?post_logout_redirect_uri=/";
+
+console.log("Running auth config")
+
+// Start the mock server. Use conditional start to avoid starting the server in production.
+async function enableMocking() {
+    if (process.env.NODE_ENV !== 'development') {
+        return;
+    }
+
+    console.log("Starting mock server")
+    const { worker } = await import("./mocks/browser");
+    return worker.start();
+}
+
+await enableMocking()
 
 interface AppServicesToken {
     id_token: string;

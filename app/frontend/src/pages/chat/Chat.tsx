@@ -294,8 +294,8 @@ const Chat = () => {
                     {!lastQuestionRef.current ? (
                         <div className={styles.chatEmptyState}>
                             <SparkleFilled fontSize={"120px"} primaryFill={"rgba(115, 118, 225, 1)"} aria-hidden="true" aria-label="Chat logo" />
-                            <h1 className={styles.chatEmptyStateTitle}>Chat with your data</h1>
-                            <h2 className={styles.chatEmptyStateSubtitle}>Ask anything or try an example</h2>
+                            <h1 className={styles.chatEmptyStateTitle}>Conversa con tus documentos</h1>
+                            <h2 className={styles.chatEmptyStateSubtitle}>Pregunta lo que sea o prueba uno de los ejemplos</h2>
                             <ExampleList onExampleClicked={onExampleClicked} useGPT4V={useGPT4V} />
                         </div>
                     ) : (
@@ -361,7 +361,7 @@ const Chat = () => {
                     <div className={styles.chatInput}>
                         <QuestionInput
                             clearOnSend
-                            placeholder="Type a new question (e.g. does my plan cover annual eye exams?)"
+                            placeholder="Ingresa una pregunta"
                             disabled={isLoading}
                             onSend={question => makeApiRequest(question)}
                         />
@@ -380,18 +380,18 @@ const Chat = () => {
                 )}
 
                 <Panel
-                    headerText="Configure answer generation"
+                    headerText="Configuración"
                     isOpen={isConfigPanelOpen}
                     isBlocking={false}
                     onDismiss={() => setIsConfigPanelOpen(false)}
-                    closeButtonAriaLabel="Close"
+                    closeButtonAriaLabel="Cerrar"
                     onRenderFooterContent={() => <DefaultButton onClick={() => setIsConfigPanelOpen(false)}>Close</DefaultButton>}
                     isFooterAtBottom={true}
                 >
                     <TextField
                         className={styles.chatSettingsSeparator}
                         defaultValue={promptTemplate}
-                        label="Override prompt template"
+                        label="Sustituir la plantilla de solicitud"
                         multiline
                         autoAdjustHeight
                         onChange={onPromptTemplateChange}
@@ -399,7 +399,7 @@ const Chat = () => {
 
                     <Slider
                         className={styles.chatSettingsSeparator}
-                        label="Temperature"
+                        label="Temperatura"
                         min={0}
                         max={1}
                         step={0.1}
@@ -411,7 +411,7 @@ const Chat = () => {
 
                     <SpinButton
                         className={styles.chatSettingsSeparator}
-                        label="Minimum search score"
+                        label="Punteo mínimo de búsqueda"
                         min={0}
                         step={0.01}
                         defaultValue={minimumSearchScore.toString()}
@@ -420,7 +420,7 @@ const Chat = () => {
 
                     <SpinButton
                         className={styles.chatSettingsSeparator}
-                        label="Minimum reranker score"
+                        label="Punteo mínimo de reranker"
                         min={1}
                         max={4}
                         step={0.1}
@@ -430,7 +430,7 @@ const Chat = () => {
 
                     <SpinButton
                         className={styles.chatSettingsSeparator}
-                        label="Retrieve this many search results:"
+                        label="Número de resultados por búsqueda:"
                         min={1}
                         max={50}
                         defaultValue={retrieveCount.toString()}
@@ -442,21 +442,21 @@ const Chat = () => {
                         <Checkbox
                             className={styles.chatSettingsSeparator}
                             checked={useSemanticRanker}
-                            label="Use semantic ranker for retrieval"
+                            label="Usar el clasificador semántico"
                             onChange={onUseSemanticRankerChange}
                         />
                     )}
                     <Checkbox
                         className={styles.chatSettingsSeparator}
                         checked={useSemanticCaptions}
-                        label="Use query-contextual summaries instead of whole documents"
+                        label="Usar resúmenes contextuales de la consulta en lugar de documentos completos"
                         onChange={onUseSemanticCaptionsChange}
                         disabled={!useSemanticRanker}
                     />
                     <Checkbox
                         className={styles.chatSettingsSeparator}
                         checked={useSuggestFollowupQuestions}
-                        label="Suggest follow-up questions"
+                        label="Sugerir preguntas de seguimiento"
                         onChange={onUseSuggestFollowupQuestionsChange}
                     />
 
@@ -484,7 +484,7 @@ const Chat = () => {
                         <Checkbox
                             className={styles.chatSettingsSeparator}
                             checked={useOidSecurityFilter || requireAccessControl}
-                            label="Use oid security filter"
+                            label="Usar filtro de seguridad de oid"
                             disabled={!isLoggedIn(client) || requireAccessControl}
                             onChange={onUseOidSecurityFilterChange}
                         />
@@ -493,7 +493,7 @@ const Chat = () => {
                         <Checkbox
                             className={styles.chatSettingsSeparator}
                             checked={useGroupsSecurityFilter || requireAccessControl}
-                            label="Use groups security filter"
+                            label="Usar filtro de seguridad de grupos"
                             disabled={!isLoggedIn(client) || requireAccessControl}
                             onChange={onUseGroupsSecurityFilterChange}
                         />
@@ -502,7 +502,8 @@ const Chat = () => {
                     <Checkbox
                         className={styles.chatSettingsSeparator}
                         checked={shouldStream}
-                        label="Stream chat completion responses"
+                        // label="Stream chat completion responses"
+                        label="Transferir respuestas de chat"
                         onChange={onShouldStreamChange}
                     />
                     {useLogin && <TokenClaimsDisplay />}

@@ -3,15 +3,15 @@ import { Example } from "./Example";
 import styles from "./Example.module.css";
 
 const DEFAULT_EXAMPLES: string[] = [
-    "What is included in my Northwind Health Plus plan that is not in standard?",
-    "What happens in a performance review?",
-    "What does a Product Manager do?"
+    "¿Qué está incluido en mi plan de seguro médico que no incluye el IGSS?",
+    "¿Qué sucede en una evaluación de desempeño?",
+    "¿Qué hace un Gerente de Producto?"
 ];
 
 const GPT4V_EXAMPLES: string[] = [
-    "Compare the impact of interest rates and GDP in financial markets.",
-    "What is the expected trend for the S&P 500 index over the next five years? Compare it to the past S&P 500 performance",
-    "Can you identify any correlation between oil prices and stock market trends?"
+    "Compara el impacto de las tasas de interés y el PIB en los mercados financieros en Guatemala.",
+    "¿Cuál es la tendencia esperada para el índice S&P 500 en los próximos cinco años? Compáralo con el rendimiento pasado del S&P 500.",
+    "¿Puedes identificar alguna correlación entre los precios del petróleo y las tendencias del mercado de valores?"
 ];
 
 interface Props {

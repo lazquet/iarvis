@@ -11,6 +11,7 @@ import "./index.css";
 import Layout from "./pages/layout/Layout";
 import Chat from "./pages/chat/Chat";
 
+
 var layout;
 if (useLogin) {
     var msalInstance = new PublicClientApplication(msalConfig);
